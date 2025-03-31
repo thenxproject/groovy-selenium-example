@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.safari.SafariDriver
 import org.openqa.selenium.support.ui.*
 
+import java.nio.channels.SelectableChannel
 import java.time.Duration
 import java.util.logging.*
 
@@ -70,6 +71,12 @@ class Browser {
 
 	void setText(By by, String text, Integer timeout = elementWait) {
 		findVisibleElement(by, elementWait).sendKeys(text)
+	}
+
+	void selectDropdownValue(By by, String text, Integer timeout = elementWait) {
+		WebElement element = findVisibleElement(by, timeout)
+		Select dropdown = new Select(element)
+		dropdown.selectByValue(text)
 	}
 
 	void openUrl(String url) {
