@@ -6,14 +6,13 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.safari.SafariDriver
 import org.openqa.selenium.support.ui.*
 
-import java.nio.channels.SelectableChannel
 import java.time.Duration
 import java.util.logging.*
 
 class Browser {
 
 	protected WebDriver driver
-	protected Integer elementWait = 5
+	protected Integer elementWait = System.getProperty("elementWait", "3").toInteger()
 	protected static Logger logger = Logger.getLogger(this.getClass().getName())
 
 	Browser() {
@@ -70,7 +69,7 @@ class Browser {
 	}
 
 	void setText(By by, String text, Integer timeout = elementWait) {
-		findVisibleElement(by, elementWait).sendKeys(text)
+		findVisibleElement(by, timeout).sendKeys(text)
 	}
 
 	void selectDropdownValue(By by, String text, Integer timeout = elementWait) {
