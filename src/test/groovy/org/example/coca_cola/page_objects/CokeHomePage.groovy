@@ -8,10 +8,10 @@ class CokeHomePage extends BasePage {
 		super(browser)
 		this.url = "https://coca-cola.com/"
 		this.atChecker = By.cssSelector("""[src\$="Coke-company-logo-black.svg"]""")
-
 	}
 
-	By oneTrustCloseButton = By.cssSelector("""#close-pc-btn-handler""")
+	private By oneTrustCloseButton = By.cssSelector("""#close-pc-btn-handler""")
+	private By faqLink = By.cssSelector("""[href="/us/en/about-us/faq"]""")
 
 	void clickOneTrustCloseButton() {
 		browser.click(oneTrustCloseButton)
@@ -20,5 +20,9 @@ class CokeHomePage extends BasePage {
 
 	Boolean isOneTrustModalOpen() {
 		return browser.isDisplayed(oneTrustCloseButton)
+	}
+
+	void clickFaqsLink() {
+		browser.click(faqLink)
 	}
 }

@@ -1,64 +1,41 @@
 package org.example.utility
 
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.*
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.safari.SafariDriver
+import org.openqa.selenium.support.ui.*
 
 import java.time.Duration
-import java.util.logging.Level
-import java.util.logging.Logger
+import java.util.logging.*
 
 class Browser {
 
 	protected WebDriver driver
 	protected Integer elementWait = 5
 	protected static Logger logger = Logger.getLogger(this.getClass().getName())
-	protected static String browser = getBrowserName()
 
 	Browser() {
 		// Creates the chrome driver to use
-		switch (getBrowserName()) {
+		switch (System.getProperty("browser", "chrome").toLowerCase()) {
 			case "chrome":
 				driver = new ChromeDriver()
 				break
-			case "gecko":
+			case "firefox":
 				driver = new FirefoxDriver()
+				break
+			case "safari":
+				driver = new SafariDriver()
 				break
 			default:
 				driver = new ChromeDriver()
 				break
 		}
-	}
 
-	/**
-	 * Gets the browsers name.
-	 *
-	 * @return The name of the browser that was launched.
-	 */
-	static String getBrowserName() {
-		String browser = "chrome"
-
-		try {
-			browser = System.getProperty("browser", "chrome").toLowerCase()
-		} catch (RuntimeException re) {
-			logException(re)
-			logger.info("Unable to get browser name.")
-		}
-
-		switch (browser) {
-			case "firefox":
-				browser = "gecko"
-				break
-			default:
-				browser = "chrome"
-				break
-		}
-
-		return browser
+		Integer height = System.getProperty("height", "1080").toInteger()
+		Integer width = System.getProperty("width", "1920").toInteger()
+		Dimension windowSize = new Dimension(width, height)
+		driver.manage().window().setSize(windowSize)
 	}
 
 	Boolean isDisplayed(By element, Integer timeout = elementWait) {
