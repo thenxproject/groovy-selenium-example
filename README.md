@@ -14,3 +14,5 @@
 4. Run either the whole class or just one of the methods.
 5. If you run the whole class it should launch the tests in parallel. So multiple tests will run at the same time.
 
+# Notes
+I have a test server at http://imthirsty.servebeer.com/ that can be used for experimenting.

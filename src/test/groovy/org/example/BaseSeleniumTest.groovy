@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*
 
 import java.util.concurrent.TimeUnit
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 @Timeout(value = 3, unit = TimeUnit.MINUTES)
 class BaseSeleniumTest extends BaseObject {
 

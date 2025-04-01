@@ -3,7 +3,6 @@ package org.example.coca_cola
 import org.example.BaseSeleniumTest
 import org.junit.jupiter.api.*
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class DemoTest extends BaseSeleniumTest {
 	@Test
 	void faqLink() {
