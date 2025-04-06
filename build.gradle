@@ -13,14 +13,14 @@ apply plugin: "idea"
 apply plugin: "groovy"
 
 dependencies {
-    implementation 'org.apache.groovy:groovy:4.0.14'
+    implementation 'org.apache.groovy:groovy:4.0.15'
     testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation "org.seleniumhq.selenium:selenium-api:4.24.0"
+    testImplementation "org.seleniumhq.selenium:selenium-api:4.25.0"
     testImplementation "org.seleniumhq.selenium:selenium-java:4.25.0"
-    testImplementation "org.seleniumhq.selenium:selenium-chrome-driver:4.24.0"
-    testImplementation "org.seleniumhq.selenium:selenium-firefox-driver:4.24.0"
+    testImplementation "org.seleniumhq.selenium:selenium-chrome-driver:4.25.0"
+    testImplementation "org.seleniumhq.selenium:selenium-firefox-driver:4.25.0"
     testImplementation "org.seleniumhq.selenium:selenium-safari-driver:4.25.0"
 }
 
