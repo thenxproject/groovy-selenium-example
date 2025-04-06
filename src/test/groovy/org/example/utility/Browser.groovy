@@ -38,7 +38,7 @@ class Browser {
 		driver.manage().window().setSize(windowSize)
 	}
 
-	Boolean isDisplayed(By element, Integer timeout = elementWait) {
+	Boolean isDisplayed(By element, Integer timeout = elementWait) throws Exception {
 		Boolean isVisible = false
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout))
@@ -51,34 +51,34 @@ class Browser {
 		return isVisible
 	}
 
-	WebElement findVisibleElement(By by, Integer timeout = elementWait) {
+	private WebElement findVisibleElement(By by, Integer timeout = elementWait) throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout))
 		wait.until(ExpectedConditions.visibilityOfElementLocated(by))
 	}
 
-	void click(By by, Integer timeout = elementWait) {
+	void click(By by, Integer timeout = elementWait) throws Exception {
 		findVisibleElement(by, timeout).click()
 	}
 
-	static void sleep(Integer seconds = 1) {
+	static void sleep(Integer seconds = 1) throws Exception {
 		Thread.sleep(Duration.ofSeconds(seconds).toMillis())
 	}
 
-	String getText(By by, Integer timeout = elementWait) {
+	String getText(By by, Integer timeout = elementWait) throws Exception {
 		return findVisibleElement(by, timeout).getText()
 	}
 
-	void setText(By by, String text, Integer timeout = elementWait) {
+	void setText(By by, String text, Integer timeout = elementWait) throws Exception {
 		findVisibleElement(by, timeout).sendKeys(text)
 	}
 
-	void selectDropdownValue(By by, String text, Integer timeout = elementWait) {
+	void selectDropdownValue(By by, String text, Integer timeout = elementWait) throws Exception {
 		WebElement element = findVisibleElement(by, timeout)
 		Select dropdown = new Select(element)
 		dropdown.selectByValue(text)
 	}
 
-	void openUrl(String url) {
+	void openUrl(String url) throws Exception {
 		driver.get(url)
 	}
 
